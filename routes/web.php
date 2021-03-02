@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComidaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::Resource('comidas', ComidaController::class)->except([
+	'create',
+]);
 
 require __DIR__.'/auth.php';

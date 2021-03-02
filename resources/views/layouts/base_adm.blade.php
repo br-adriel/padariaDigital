@@ -47,7 +47,7 @@ The above copyright notice and this permission notice shall be included in all c
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ route('comidas.index') }}">
             <i class="material-icons">add_shopping_cart</i>
             <p>Produtos</p>
           </a>
