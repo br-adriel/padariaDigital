@@ -10,7 +10,7 @@
         <h2 class="text-center text-black">Entre:</h2>
 
         <form method="POST" action="{{ route('login') }}" class="login-form">
-            @csrf
+            {{ csrf_field() }}
 
             <!-- Email Address -->
             <div class="form-group">
