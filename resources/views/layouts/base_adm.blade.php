@@ -29,44 +29,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <body style="transition: none">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange" data-background-color="white">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="orange"
-
-        Tip 2: you can also add an image using data-image tag
-      -->
-      <div class="logo"><a href="{{ route('dashboard') }}" class="simple-text logo-normal">
-       <img src="{{ asset('/assets/img/icone.png') }}" width="15%"> Pães&Delícias
-     </a></div>
-     <div class="sidebar-wrapper">
-      <ul class="nav">
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">person</i>
-            <p>Empresa</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="{{ route('comidas.index') }}">
-            <i class="material-icons">add_shopping_cart</i>
-            <p>Produtos</p>
-          </a>
-        </li>
-
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">add_task</i>
-            <p>Pedidos</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">delivery_dining</i>
-            <p>Entregas</p>
-          </a>
-        </li>
-      </ul>
-    </div>
+    @yield('sidebar')
   </div>
   <div class="main-panel">
     <!-- Navbar -->
