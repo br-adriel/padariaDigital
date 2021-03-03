@@ -29,15 +29,18 @@ Produtos
 
 					<div class="card-body" id="comida{{ $comida->id }}">
 						@if ($comida->tag == 0)
-							<span class="badge badge-info">Bolo</span>
+							<span class="badge badge-info tag-comida">Bolo</span>
 						@elseif ($comida->tag == 1)
-							<span class="badge badge-warning">Pães</span>
+							<span class="badge badge-warning tag-comida">Pães</span>
 						@else
-							<span class="badge badge-danger">Salgados</span>
+							<span class="badge badge-danger tag-comida">Salgados</span>
 						@endif
-						<h4 class="card-title">{{ $comida->nome }}</h4>
-						<h5 class="card-text text-danger">R$ {{ $comida->preco }}</h5>
-						<button class="btn btn-danger" data-toggle="modal" href="#editar">editar</button>
+						<h4 class="card-title nome-comida">{{ $comida->nome }}</h4>
+						<h5 class="card-text text-danger preco-comida">R$ {{ $comida->preco }}</h5>
+						<p class="d-none descricao-comida">{{ $comida->descricao }}</p>
+						<a href="{{ route('comidas.edit', ['comida'=>$comida->id]) }}">
+							<button class="btn btn-danger">editar</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -46,66 +49,6 @@ Produtos
 	</div>
 
 	@include('layouts.footer')
-
-	<!-- Modal Editar -->
-	<div class="modal fade" id="editar" tabindex="-1" role="dialog" >
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header bg-warning">
-					<h5 class="modal-title">Editar</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="row">
-							<div class="col-md-5">
-								<div class="form-group">
-									<label class="bmd-label-floating">Nome</label>
-									<input type="text" class="form-control" value="Pão Francês">
-								</div>
-							</div>
-							<div class="col-md-7">
-								<div class="form-group">
-									<label class="bmd-label-floating">Preço</label>
-									<input type="text" class="form-control" value="0,10">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<select class="form-control" id="tag">
-										<option>selecione</option>
-										<option selected=>Pão</option>
-										<option>Bolo</option>
-										<option>algados</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="file" class="custom-file-input border" id="customFile">
-									<label class="custom-file-label border" for="customFile">PãoFrances.png</label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label class="bmd-label-floating">Descrição</label>
-									<input type="text" class="form-control" value="info.: Contém Glútem">
-								</div>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-info pull-right">Salvar</button>
-						<div class="clearfix"></div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Modal Adicionar um novo produto -->
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog" >

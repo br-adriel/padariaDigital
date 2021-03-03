@@ -145,6 +145,8 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="{{ asset('assets1/js/plugins/bootstrap-notify.js') }}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets1/js/material-dashboard.js?v=2.1.2') }}" type="text/javascript"></script>
+
+  @yield('js')
 </body>
 
 </html>
