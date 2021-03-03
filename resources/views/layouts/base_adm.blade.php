@@ -82,6 +82,7 @@ The above copyright notice and this permission notice shall be included in all c
           <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end">
+          <div class="navbar-form" style="display: none"></div>
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,16 +122,10 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="{{ asset('assets1/js/plugins/jquery.bootstrap-wizard.js') }}"></script>
   <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="{{ asset('assets1/js/plugins/bootstrap-selectpicker.js') }}"></script>
-  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="{{ asset('assets1/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
-  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="{{ asset('assets1/js/plugins/jquery.dataTables.min.js') }}"></script>
   <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="{{ asset('assets1/js/plugins/bootstrap-tagsinput.js') }}"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
   <script src="{{ asset('assets1/js/plugins/jasny-bootstrap.min.js') }}"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="{{ asset('assets1/js/plugins/fullcalendar.min.js') }}"></script>
   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
   <script src="{{ asset('assets1/js/plugins/jquery-jvectormap.js') }}"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
