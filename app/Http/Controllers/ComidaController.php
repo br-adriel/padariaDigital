@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comida;
 use Illuminate\Http\Request;
+use App\Models\Comida;
 
 class ComidaController extends Controller
 {
@@ -51,10 +51,10 @@ class ComidaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comida  $comida
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comida $comida)
+    public function show($id)
     {
         //
     }
@@ -62,34 +62,47 @@ class ComidaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comida  $comida
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comida $comida)
+    public function edit($id)
     {
-        //
+        $comida = Comida::find($id);
+        return view('administrador.comidas.edit', ['comida'=>$comida]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comida  $comida
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comida $comida)
+    public function update(Request $request, $id)
     {
-        //
+        $comida = Comida::find($id);
+
+        $comida->nome       = $request->nome;
+        $comida->descricao  = $request->descricao;
+        $comida->preco      = $request->preco;
+        $comida->tag        = $request->tag;
+
+        $comida->save();
+
+        return redirect()->route('comidas.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comida  $comida
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comida $comida)
+    public function destroy($id)
     {
-        //
+        $comida = Comida::find($id);
+        $comida->delete();
+
+        return redirect()->route('comidas.index');
     }
 }

@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::Resource('comidas', ComidaController::class)->except([
-	'create',
+	'create', 'show',
 ]);
 
 require __DIR__.'/auth.php';
