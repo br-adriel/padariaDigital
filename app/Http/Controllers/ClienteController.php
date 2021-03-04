@@ -38,6 +38,11 @@ class ClienteController extends Controller
 	    	$cliente->save();
  		}
 
+        //checa se o request veio do carrinho
+        if ($comida == 0) {
+            return redirect()->route('pedidos.carrinho', ['cliente'=>$cliente]);
+        }
+
  		$pedido = new Pedido;
 
  		$pedido->cliente 	= $cliente->id;
