@@ -31,12 +31,13 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#page-top">Home</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a></li>
 					@isset($cliente)
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas', ['cliente'=>$cliente]) }}">Entregas</a></li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('pedidos.carrinho', ['cliente'=>$cliente]) }}">Carrinho</a>
 					</li>
 					@else
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a></li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('pedidos.carrinho') }}">Carrinho</a>
 					</li>
