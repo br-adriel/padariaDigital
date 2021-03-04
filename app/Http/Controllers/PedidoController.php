@@ -18,7 +18,7 @@ class PedidoController extends Controller
     	$pedido->situacao 	= 0;
 
     	$pedido->save();
-    	return redirect()->route('index', ['cliente'=>$pedido->cliente]);
+    	return redirect()->route('pedidos.carrinho', ['cliente'=>$pedido->cliente]);
     }
 
 
@@ -38,7 +38,7 @@ class PedidoController extends Controller
 
 
     public function entregas() {
-    	$pedidos = Pedido::where('situacao', '!=', 0)->orderBy('created_at', 'DESC')->get();
+    	$pedidos = Pedido::where('situacao', '!=', 0)->where('situacao', '!=', 1)->orderBy('created_at', 'DESC')->get();
     	$clis = CLiente::all();
 
     	return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis'=>$clis]);
@@ -46,7 +46,7 @@ class PedidoController extends Controller
 
 
     public function entregas2($cliente) {
-    	$pedidos = Pedido::where('situacao', '!=', 0)->orderBy('created_at', 'DESC')->get();
+    	$pedidos = Pedido::where('situacao', '!=', 0)->where('situacao', '!=', 1)->orderBy('created_at', 'DESC')->get();
     	$clis = Cliente::all();
 
     	return view('cliente.pedidos.entregas', 
