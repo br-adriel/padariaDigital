@@ -26,9 +26,18 @@ Route::Resource('comidas', ComidaController::class)->except([
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [ClienteController::class, 'index'])->name('index');
-Route::get('/{cliente?}', [ClienteController::class, 'index2'])->name('index');
 
 Route::post('/clientes/create/{comida}', [ClienteController::class, 'create'])->name('clientes.create');
 
 Route::post('/pedidos/create/{cliente}/{comida}', [PedidoController::class, 'create'])->name('pedidos.create');
+
+Route::get('/carrinho', [PedidoController::class, 'carrinho'])->name('pedidos.carrinho');
+Route::get('/carrinho/{cliente?}', [PedidoController::class, 'carrinho2'])->name('pedidos.carrinho');
+
+Route::delete('/carrinho/{cliente}/{pedido}/excluir', [PedidoController::class, 'destroy'])->name('pedidos.delete');
+
+Route::get('/entregas', [PedidoController::class, 'carrinho'])->name('pedidos.entregas');
+
+
+Route::get('/', [ClienteController::class, 'index'])->name('index');
+Route::get('/{cliente?}', [ClienteController::class, 'index2'])->name('index');
