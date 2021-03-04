@@ -94,7 +94,6 @@
 				<div class="col-lg-4 my-3 my-lg-0">
 					<h6>Rua.:aquela ali que contruiram, 999, centro</h6>
 					<h6>Na lateral da esquina que fica na ponta</h6>
-					<a href="{{ route('login') }}">Administração</a>
 				</div>
 			</div>
 		</div>

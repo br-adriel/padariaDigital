@@ -45,6 +45,13 @@ Produtos
             <p>Entregas</p>
           </a>
         </li>
+        <li class="nav-item">
+          <form method="POST" action="{{ route('logout') }}" id="form-sair">
+        		@csrf
+        	</form>
+
+        	<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); getElementById('form-sair').submit()">Sair</a>
+        </li>
       </ul>
     </div>
 @endsection
@@ -88,8 +95,6 @@ Produtos
 			@endforeach
 		</div>
 	</div>
-
-	@include('layouts.footer')
 
 	<!-- Modal Adicionar um novo produto -->
 	<div class="modal fade" id="adicionar" tabindex="-1" role="dialog" >
