@@ -38,7 +38,33 @@ class PedidoController extends Controller
 
 
     public function entregas() {
-    	return "entregas";
+    	$pedidos = Pedido::where('situacao', '!=', 0)->orderBy('created_at', 'DESC')->get();
+    	$clis = CLiente::all();
+
+    	return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis'=>$clis]);
+    }
+
+
+    public function entregas2($cliente) {
+    	$pedidos = Pedido::where('situacao', '!=', 0)->orderBy('created_at', 'DESC')->get();
+    	$clis = Cliente::all();
+
+    	return view('cliente.pedidos.entregas', 
+    		['pedidos'=>$pedidos, 
+    		'cliente'=>$cliente, 
+    		'clis'=>$clis]);
+    }
+
+
+    public function pedirEntrega($cliente) {
+    	$pedidos = Pedido::where('cliente', $cliente)->where('situacao', 0)->get();
+
+    	foreach ($pedidos as $pedido) {
+    		$pedido->situacao = 1;
+    		$pedido->save();
+    	}
+
+    	return redirect()->route('pedidos.entregas', ['cliente'=>$cliente]);
     }
 
 

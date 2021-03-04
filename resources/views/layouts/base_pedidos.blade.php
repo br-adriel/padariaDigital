@@ -34,7 +34,7 @@
 							<a class="nav-link js-scroll-trigger" href="{{ route('index', ['cliente'=>$cliente]) }}">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a>
+							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas', ['cliente'=>$cliente]) }}">Entregas</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.carrinho', ['cliente'=>$cliente]) }}">Carrinho</a>

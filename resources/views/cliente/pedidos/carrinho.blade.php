@@ -23,7 +23,7 @@ Seu carrinho
 									<td>
 										{{ $comida->nome }}
 									</td>
-									<td></td>
+									<td>Pedido #{{ $pedido->id }}</td>
 									<td>R$ {{ $comida->preco * $pedido->quantidade }}</td>
 								@endif
 							@endforeach
@@ -47,14 +47,15 @@ Seu carrinho
 					<td>
 					</td>
 					<td>
+						@if (count($pedidos) != 0)
 						<div class="text-center">
-								<button class="btn btn-danger btn-xl text-uppercase" data-toggle="modal" data-target="#pedido">Editar pedido</button>
+							<button class="btn btn-info btn-xl text-uppercase" data-toggle="modal" data-target="#confirmar">Pedir entrega</button>
 						</div>
-					</td>
-					<td>
+						@else
 						<div class="text-center">
-							<button class="btn btn-info btn-xl text-uppercase" type="submit" data-toggle="modal" data-target="#confirmar">confirmar</button>
+							<button class="btn btn-info btn-xl text-uppercase" data-toggle="modal" data-target="#confirmar" disabled>Pedir entrega</button>
 						</div>
+						@endif
 					</td>
 					<td>
 					</td>
@@ -91,56 +92,8 @@ Seu carrinho
 		</div>
 	</footer>
 
-<!-- modal editar-->
-	<div class="modal fade" id="pedido" tabindex="-1" role="dialog" >
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header bg-warning">
-					<h5 class="modal-title">Pedido</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form class="form-inline">
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col-lg-12">
-								<div class="modal-body">
-									<table class="table table-bordered">
-										<tr>
-											<td> <input type="text" class="form-control col-md-5" placeholder="quantidade" value="30" required></td>
-											<td class="col-md-5">Pão Francês</td>
-											<td>=</td>
-											<td>3,00</td>
-										</tr>
-										<tr>
-											<td> <input type="text" class="form-control col-md-5" placeholder="quantidade" value="1" required></td>
-											<td class="col-md-5">red velvet</td>
-											<td>=</td>
-											<td>50,00</td>
-										</tr>
-										<tr>
-											<td> <input type="text" class="form-control col-md-5" placeholder="quantidade" value="2" required></td>
-											<td class="col-md-5">Pão de 7 grãos</td>
-											<td>=</td>
-											<td>36,00</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>    
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-info" type="submit">confirmar</button>
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-<!-- modal confirmar -->
+	@isset($cliente)
+	<!-- modal confirmar -->
 	<div class="modal fade" id="confirmar" tabindex="-1" role="dialog" >
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -151,10 +104,16 @@ Seu carrinho
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 					<a href="entregas.html">
-						<button type="button" class="btn btn-info" type="submit">Confirmar</button>
+						<button type="button" class="btn btn-info" onclick="document.getElementById('formPedirEntrega').submit(); return false">Confirmar</button>
+
+						<form id="formPedirEntrega" method="post" action="{{ route('pedidos.pedir_entrega', ['cliente'=>$cliente]) }}">
+							@csrf
+							@method('PUT')
+						</form>
 					</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	@endisset
 @endsection
