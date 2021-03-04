@@ -48,19 +48,6 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="navbar-form" style="display: none"></div>
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">person</i>
-                <p class="d-lg-none d-md-block">
-                  Empresa
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <form method="POST" action="{{ route('logout') }}" id="form-sair">
-                  @csrf
-                </form>
-
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); getElementById('form-sair').submit()">Sair</a>
-              </div>
             </li>
           </ul>
         </div>
