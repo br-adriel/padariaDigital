@@ -24,6 +24,18 @@ Route::Resource('comidas', ComidaController::class)->except([
 	'create', 'show',
 ])->middleware(['auth']);
 
+//tela pedidos
+Route::get('/pedidos/pendentes', [PedidoController::class, 'pedidosPendentes'])->middleware(['auth'])->name('pedidos.pedidos_pendentes');
+
+Route::put('/pedidos/pendentes/aceitar/{cliente}', [PedidoController::class, 'aceitarPedido'])->middleware(['auth'])->name('pedidos.aceitar_pedido');
+
+//tela entregas
+Route::get('/entregas/situacao', [PedidoController::class, 'situacaoEntregas'])->middleware(['auth'])->name('pedidos.situacao_entregas');
+
+Route::put('/entregas/{cliente}/marcar/enviado', [PedidoController::class, 'marcarEnviado'])->middleware(['auth'])->name('pedidos.marcar_enviado');
+
+Route::put('/entregas/{cliente}/marcar/entregue', [PedidoController::class, 'marcarEntregue'])->middleware(['auth'])->name('pedidos.marcar_entregue');
+
 require __DIR__.'/auth.php';
 
 

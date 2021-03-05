@@ -10,50 +10,50 @@ Editar produto
 
 @section('sidebar')
 <div class="sidebar" data-color="orange" data-background-color="white">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="orange"
+			<!--
+				Tip 1: You can change the color of the sidebar using: data-color="orange"
 
-        Tip 2: you can also add an image using data-image tag
-      -->
-      <div class="logo"><a href="{{ route('dashboard') }}" class="simple-text logo-normal">
-       <img src="{{ asset('/assets/img/icone.png') }}" width="15%"> Pães&Delícias
-     </a></div>
-     <div class="sidebar-wrapper">
-      <ul class="nav">
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">person</i>
-            <p>Empresa</p>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ route('comidas.index') }}">
-            <i class="material-icons">add_shopping_cart</i>
-            <p>Produtos</p>
-          </a>
-        </li>
+				Tip 2: you can also add an image using data-image tag
+			-->
+			<div class="logo"><a href="{{ route('dashboard') }}" class="simple-text logo-normal">
+			 <img src="{{ asset('/assets/img/icone.png') }}" width="15%"> Pães&Delícias
+		 </a></div>
+		 <div class="sidebar-wrapper">
+			<ul class="nav">
+				<li class="nav-item ">
+					<a class="nav-link" href="#">
+						<i class="material-icons">person</i>
+						<p>Empresa</p>
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{{ route('comidas.index') }}">
+						<i class="material-icons">add_shopping_cart</i>
+						<p>Produtos</p>
+					</a>
+				</li>
 
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">add_task</i>
-            <p>Pedidos</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">delivery_dining</i>
-            <p>Entregas</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <form method="POST" action="{{ route('logout') }}" id="form-sair">
-        		@csrf
-        	</form>
+				<li class="nav-item ">
+					<a class="nav-link" href="{{ route('pedidos.pedidos_pendentes') }}">
+						<i class="material-icons">add_task</i>
+						<p>Pedidos</p>
+					</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="{{ route('pedidos.situacao_entregas') }}">
+						<i class="material-icons">delivery_dining</i>
+						<p>Entregas</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<form method="POST" action="{{ route('logout') }}" id="form-sair">
+						@csrf
+					</form>
 
-        	<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); getElementById('form-sair').submit()">Sair</a>
-        </li>
-      </ul>
-    </div>
+					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); getElementById('form-sair').submit()">Sair</a>
+				</li>
+			</ul>
+		</div>
 @endsection
 
 @section('conteudo')

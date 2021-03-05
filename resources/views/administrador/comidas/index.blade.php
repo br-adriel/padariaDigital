@@ -34,17 +34,17 @@ Produtos
         </li>
 
         <li class="nav-item ">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ route('pedidos.pedidos_pendentes') }}">
             <i class="material-icons">add_task</i>
             <p>Pedidos</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">
-            <i class="material-icons">delivery_dining</i>
-            <p>Entregas</p>
-          </a>
-        </li>
+          <a class="nav-link" href="{{ route('pedidos.situacao_entregas') }}">
+			<i class="material-icons">delivery_dining</i>
+			<p>Entregas</p>
+		  </a>
+		</li>
         <li class="nav-item">
           <form method="POST" action="{{ route('logout') }}" id="form-sair">
         		@csrf
