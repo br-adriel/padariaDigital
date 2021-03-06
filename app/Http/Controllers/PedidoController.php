@@ -75,7 +75,9 @@ class PedidoController extends Controller
     		$pedido->save();
     	}
 
-    	return redirect()->route('pedidos.entregas', ['cliente'=>$cliente]);
+        $mensagem = "Nossa equipe recebeu seu pedido, entraremos em contato assim que pudermos.";
+
+    	return redirect()->route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>$mensagem]);
     }
 
 

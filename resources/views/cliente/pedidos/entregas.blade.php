@@ -7,6 +7,12 @@ Entregas
 @section('conteudo')
 <section class="page-section bg-light mt-3" >
 	<div class="container">
+		@isset($mensagem)
+		<div class="alert alert-success">
+			<p class="text-center mb-0">{{ $mensagem }}</p>
+		</div>
+		@endisset
+
 		@foreach($pedidos as $pedido)
 		<div class="card mb-3">
 		  <div class="card-header bg-primary">

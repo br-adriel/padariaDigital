@@ -10,26 +10,36 @@ Seu carrinho
 	<div class="container">
 		<div class="text-center">
 			<h2 class="section-heading text-uppercase">Seu Carrinho</h2>
+			<h3 class="section-subheading text-muted text-danger">Comprando como {{ $cliente->nome }}. Caso não seja você, clique <a href="{{ route('index') }}">aqui</a>.</h3>
 		</div>
 		<div class="row align-items-stretch mb-5">
 			<table class="table">
+				<thead>
+					<tr>
+						<th>Quantidade</th>
+						<th>Produto</th>
+						<th>Preço unitário</th>
+						<th>Preço total</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
 				<tbody>
 					@isset($pedidos)
 						@foreach($pedidos as $pedido)
 						<tr>
-							<th scope="row">{{ $pedido->quantidade }}</th>
+							<td scope="row">{{ $pedido->quantidade }}</td>
 							@foreach ($comidas as $comida)
 								@if ($pedido->comida == $comida->id)
 									<td>
 										{{ $comida->nome }}
 									</td>
-									<td>Pedido #{{ $pedido->id }}</td>
-									<td>R$ {{ $comida->preco * $pedido->quantidade }}</td>
+									<td>R$ @dinheiro($comida->preco)</td>
+									<td>R$ @dinheiro($comida->preco * $pedido->quantidade)</td>
 								@endif
 							@endforeach
 							<td>
 								<a onclick="document.getElementById('formApagar{{ $pedido->id }}').submit(); return false;">
-									<button type="button" class="btn btn-danger btn-sm">
+									<button type="button" class="btn btn-danger btn-sm" title="Excluir">
 										<i class="material-icons">delete</i>
 									</button>
 								</a>
@@ -44,9 +54,7 @@ Seu carrinho
 					@endisset
 				</tbody>
 					<tr>
-					<td>
-					</td>
-					<td>
+					<td colspan="5">
 						@if (count($pedidos) != 0)
 						<div class="text-center">
 							<button class="btn btn-info btn-xl text-uppercase" data-toggle="modal" data-target="#confirmar">Pedir entrega</button>
@@ -56,8 +64,6 @@ Seu carrinho
 							<button class="btn btn-info btn-xl text-uppercase" data-toggle="modal" data-target="#confirmar" disabled>Pedir entrega</button>
 						</div>
 						@endif
-					</td>
-					<td>
 					</td>
 				</tr>
 			</table>
