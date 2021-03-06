@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('comidas', [ComidaController::class, 'index'
+Route::get('/dashboard', [ComidaController::class, 'index'
 ])->middleware(['auth'])->name('dashboard');
 
 Route::Resource('comidas', ComidaController::class)->except([
