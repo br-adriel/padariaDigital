@@ -5,22 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Comida;
+use App\Models\Panificadora;
 use App\Models\Pedido;
 
 class ClienteController extends Controller
 {
     public function index() {
     	$comidas = Comida::all();
+        $panificadora = Panificadora::find(1);
 
-    	return view('cliente.index', ['comidas'=>$comidas]);
+    	return view('cliente.index', ['comidas'=>$comidas, 'panificadora'=>$panificadora]);
     }
 
 
     public function index2($cliente) {
     	$comidas = Comida::all();
     	$cliente = Cliente::find($cliente);
+        $panificadora = Panificadora::find(1);
 
-    	return view('cliente.index', ['comidas'=>$comidas, 'cliente'=>$cliente]);
+    	return view('cliente.index', ['comidas'=>$comidas, 'cliente'=>$cliente, 'panificadora'=>$panificadora]);
     }
 
 
@@ -40,7 +43,7 @@ class ClienteController extends Controller
 
         //checa se o request veio do carrinho
         if ($comida == 0) {
-            return redirect()->route('pedidos.carrinho', ['cliente'=>$cliente]);
+            return redirect()->route('pedidos.carrinho', ['cliente'=>$cliente, 'panificadora'=>$panificadora]);
         }
 
  		$pedido = new Pedido;

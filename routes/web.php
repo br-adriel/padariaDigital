@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ComidaController;
+use App\Http\Controllers\PanificadoraController;
 use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +25,18 @@ Route::Resource('comidas', ComidaController::class)->except([
 	'create', 'show',
 ])->middleware(['auth']);
 
+
+//tela emrpesa
+Route::get('/empresa', [PanificadoraController::class, 'edit'])->middleware(['auth'])->name('panificadoras.edit');
+
+Route::put('/empresa', [PanificadoraController::class, 'update'])->middleware(['auth'])->name('panificadoras.update');
+
+
 //tela pedidos
 Route::get('/pedidos/pendentes', [PedidoController::class, 'pedidosPendentes'])->middleware(['auth'])->name('pedidos.pedidos_pendentes');
 
 Route::put('/pedidos/pendentes/aceitar/{cliente}', [PedidoController::class, 'aceitarPedido'])->middleware(['auth'])->name('pedidos.aceitar_pedido');
+
 
 //tela entregas
 Route::get('/entregas/situacao', [PedidoController::class, 'situacaoEntregas'])->middleware(['auth'])->name('pedidos.situacao_entregas');

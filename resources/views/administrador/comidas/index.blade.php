@@ -21,7 +21,7 @@ Produtos
      <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item ">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ route('panificadoras.edit') }}">
             <i class="material-icons">person</i>
             <p>Empresa</p>
           </a>
@@ -53,7 +53,7 @@ Produtos
         	<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); getElementById('form-sair').submit()">Sair</a>
         </li>
       </ul>
-    </div>
+</div>
 @endsection
 
 @section('conteudo')

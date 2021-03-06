@@ -21,15 +21,15 @@ Entregas
 	 <div class="sidebar-wrapper">
 	  <ul class="nav">
 		<li class="nav-item ">
-		  <a class="nav-link" href="#">
-			<i class="material-icons">person</i>
-			<p>Empresa</p>
-		  </a>
+		  <a class="nav-link" href="{{ route('panificadoras.edit') }}">
+            <i class="material-icons">person</i>
+            <p>Empresa</p>
+          </a>
 		</li>
 		<li class="nav-item">
 		  <a class="nav-link" href="{{ route('comidas.index') }}">
-			<i class="material-icons">add_shopping_cart</i>
-			<p>Produtos</p>
+				<i class="material-icons">add_shopping_cart</i>
+				<p>Produtos</p>
 		  </a>
 		</li>
 
