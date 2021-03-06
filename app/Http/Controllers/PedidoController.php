@@ -44,26 +44,68 @@ class PedidoController extends Controller
 
 
     public function entregas() {
-        $panificadora = Panificadora::find(1);
+       $panificadora = Panificadora::find(1);
+        $clis = Cliente::all();
+        $pedidos = DB::table('pedidos')->join('comidas', 'pedidos.comida', '=', 'comidas.id')
+                    ->select('pedidos.*', 'comidas.preco', 'comidas.nome')
+                    ->where('situacao', '=', 2)->orWhere('situacao', '=', 3)->get();
 
-    	$pedidos = Pedido::where('situacao', '!=', 0)->where('situacao', '!=', 1)->orderBy('created_at', 'DESC')->get();
-    	$clis = CLiente::all();
+        //clintes com pedidos aprovados mas ainda nao enviados
+        $clis1 = [];
+        foreach ($clis as $c) {
+            foreach ($pedidos as $pedido) {
+                if ($pedido->cliente == $c->id && $pedido->situacao == 2) {
+                    $clis1[] = $c;
+                    break;
+                }
+            }
+        }
 
-    	return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis'=>$clis, 'panificadora'=>$panificadora]);
+        //clientes com pedidos enviados
+        $clis2 = [];
+        foreach ($clis as $c) {
+            foreach ($pedidos as $pedido) {
+                if ($pedido->cliente == $c->id && $pedido->situacao == 3) {
+                    $clis2[] = $c;
+                    break;
+                }
+            }
+        }
+
+        return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis1'=>$clis1, 'clis2'=>$clis2, 'panificadora'=>$panificadora]);
     }
 
 
     public function entregas2($cliente) {
         $panificadora = Panificadora::find(1);
+        $clis = Cliente::all();
+        $pedidos = DB::table('pedidos')->join('comidas', 'pedidos.comida', '=', 'comidas.id')
+                    ->select('pedidos.*', 'comidas.preco', 'comidas.nome')
+                    ->where('situacao', '=', 2)->orWhere('situacao', '=', 3)->get();
 
-    	$pedidos = Pedido::where('situacao', '!=', 0)->where('situacao', '!=', 1)->orderBy('created_at', 'DESC')->get();
-    	$clis = Cliente::all();
+        //clintes com pedidos aprovados mas ainda nao enviados
+        $clis1 = [];
+        foreach ($clis as $c) {
+            foreach ($pedidos as $pedido) {
+                if ($pedido->cliente == $c->id && $pedido->situacao == 2) {
+                    $clis1[] = $c;
+                    break;
+                }
+            }
+        }
 
-    	return view('cliente.pedidos.entregas', 
-    		['pedidos'=>$pedidos, 
-    		'cliente'=>$cliente, 
-    		'clis'=>$clis,
-            'panificadora'=>$panificadora]);
+        //clientes com pedidos enviados
+        $clis2 = [];
+        foreach ($clis as $c) {
+            foreach ($pedidos as $pedido) {
+                if ($pedido->cliente == $c->id && $pedido->situacao == 3) {
+                    $clis2[] = $c;
+                    break;
+                }
+            }
+        }
+
+        return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis1'=>$clis1, 'clis2'=>$clis2, 'panificadora'=>$panificadora, 'cliente'=>$cliente]);
     }
 
 
