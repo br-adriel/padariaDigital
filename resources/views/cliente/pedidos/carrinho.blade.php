@@ -76,21 +76,8 @@ Seu carrinho
 @endisset
 	
 
-	<footer class="footer py-4 bg-warning">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-4 text-lg-left">
-					<h5>© Pães & Delícias</h5> 
-					<h6>Telefone.: +55 (84) 9-9999-9999</h6>
-					<h6>Email.: PaesDelicias@gmail.com</h6>
-				</div>
-				<div class="col-lg-4 my-3 my-lg-0">
-					<h6>Rua.:aquela ali que contruiram, 999, centro</h6>
-					<h6>Na lateral da esquina que fica na ponta</h6>
-				</div>
-			</div>
-		</div>
-	</footer>
+
+	@include('layouts.footer')
 
 	@isset($cliente)
 	<!-- modal confirmar -->

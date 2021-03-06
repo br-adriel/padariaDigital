@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Comida;
+use App\Models\Panificadora;
 use App\Models\Pedido;
 use Illuminate\Support\Facades\DB;
 
@@ -24,36 +25,45 @@ class PedidoController extends Controller
 
 
     public function carrinho() {
-    	return view('cliente.pedidos.carrinho');
+        $panificadora = Panificadora::find(1);
+
+    	return view('cliente.pedidos.carrinho', ['panificadora'=>$panificadora]);
     }
 
 
     public function carrinho2($cliente) {
+        $panificadora = Panificadora::find(1);
+
     	$c = Cliente::find($cliente);
 
     	$pedidos = $c->pedidos->where('situacao', 0);
     	$comidas = Comida::all();
 
-    	return view('cliente.pedidos.carrinho', ['cliente'=>$c, 'pedidos'=>$pedidos, 'comidas'=>$comidas]);
+    	return view('cliente.pedidos.carrinho', ['cliente'=>$c, 'pedidos'=>$pedidos, 'comidas'=>$comidas, 'panificadora'=>$panificadora]);
     }
 
 
     public function entregas() {
+        $panificadora = Panificadora::find(1);
+
     	$pedidos = Pedido::where('situacao', '!=', 0)->where('situacao', '!=', 1)->orderBy('created_at', 'DESC')->get();
     	$clis = CLiente::all();
 
-    	return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis'=>$clis]);
+    	return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis'=>$clis, 'panificadora'=>$panificadora]);
     }
 
 
     public function entregas2($cliente) {
+        $panificadora = Panificadora::find(1);
+
     	$pedidos = Pedido::where('situacao', '!=', 0)->where('situacao', '!=', 1)->orderBy('created_at', 'DESC')->get();
     	$clis = Cliente::all();
 
     	return view('cliente.pedidos.entregas', 
     		['pedidos'=>$pedidos, 
     		'cliente'=>$cliente, 
-    		'clis'=>$clis]);
+    		'clis'=>$clis,
+            'panificadora'=>$panificadora]);
     }
 
 
