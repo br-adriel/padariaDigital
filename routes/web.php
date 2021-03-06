@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/dashboard', [ComidaController::class, 'index'
+Route::get('comidas', [ComidaController::class, 'index'
 ])->middleware(['auth'])->name('dashboard');
 
 Route::Resource('comidas', ComidaController::class)->except([
@@ -26,7 +26,7 @@ Route::Resource('comidas', ComidaController::class)->except([
 ])->middleware(['auth']);
 
 
-//tela emrpesa
+//tela empresa
 Route::get('/empresa', [PanificadoraController::class, 'edit'])->middleware(['auth'])->name('panificadoras.edit');
 
 Route::put('/empresa', [PanificadoraController::class, 'update'])->middleware(['auth'])->name('panificadoras.update');
