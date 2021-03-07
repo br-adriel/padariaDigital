@@ -63,3 +63,6 @@ Route::get('/entregas/{cliente?}', [PedidoController::class, 'entregas2'])->name
 
 Route::get('/', [ClienteController::class, 'index'])->name('index');
 Route::get('/{cliente?}', [ClienteController::class, 'index2'])->name('index');
+
+Route::post('/filtrar', [ClienteController::class, 'filtrar'])->name('filtrar');
+Route::post('/{cliente?}/filtrar', [ClienteController::class, 'filtrar2'])->name('filtrar');

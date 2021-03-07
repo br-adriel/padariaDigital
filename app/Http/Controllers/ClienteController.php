@@ -56,4 +56,35 @@ class ClienteController extends Controller
  		$pedido->save();
 	   	return redirect()->route('index', ['cliente'=>$cliente->id]);
     }
+
+
+    public function filtrar(Request $request) {
+        $comidas;
+
+        if ($request->tag != -1) {
+            $comidas = Comida::all()->where('tag', $request->tag);
+        } else {
+            $comidas = Comida::all();
+        }
+        
+        $panificadora = Panificadora::find(1);
+
+        return view('cliente.index', ['comidas'=>$comidas, 'panificadora'=>$panificadora, 'filtro'=>$request->tag]);
+    }
+
+
+    public function filtrar2(Request $request, $cliente) {
+        $comidas;
+
+         if ($request->tag != -1) {
+            $comidas = Comida::all()->where('tag', $request->tag);
+        } else {
+            $comidas = Comida::all();
+        }
+
+        $cliente = Cliente::find($cliente);
+        $panificadora = Panificadora::find(1);
+
+        return view('cliente.index', ['comidas'=>$comidas, 'cliente'=>$cliente, 'panificadora'=>$panificadora, 'filtro'=>$request->tag]);
+    }
 }
