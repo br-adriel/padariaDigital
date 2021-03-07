@@ -56,8 +56,53 @@
 
 
 	<!-- tabela do cardápio-->
-	<section class="page-section bg-light" id="portfolio">
+	<section class="page-section bg-light pt-5" id="portfolio">
 		<div class="container">
+			<div class="row mb-4">
+				<div class="col-12">
+					@isset($cliente)
+						<form method="post" action="{{ route('filtrar', ['cliente'=>$cliente]) }}" class="form-inline">
+					@else
+						<form method="post" action="{{ route('filtrar') }}" class="form-inline">
+					@endisset
+						@csrf
+						<div class="form-group">
+							<select class="form-control" name="tag">
+								@isset($filtro)
+									@if ($filtro == -1)
+									<option value="-1" selected>Todos</option>
+									<option value="0">Bolos</option>
+									<option value="1">Pães</option>
+									<option value="2">Salgados</option>
+									@elseif ($filtro == 0)
+									<option value="-1">Todos</option>
+									<option value="0" selected>Bolos</option>
+									<option value="1">Pães</option>
+									<option value="2">Salgados</option>
+									@elseif ($filtro == 1)
+									<option value="-1">Todos</option>
+									<option value="0">Bolos</option>
+									<option value="1" selected>Pães</option>
+									<option value="2">Salgados</option>
+									@elseif ($filtro == 2)
+									<option value="-1">Todos</option>
+									<option value="0">Bolos</option>
+									<option value="1">Pães</option>
+									<option value="2" selected>Salgados</option>
+									@else
+									@endif
+								@else
+									<option value="-1" selected>Todos</option>
+									<option value="0">Bolos</option>
+									<option value="1">Pães</option>
+									<option value="2">Salgados</option>
+								@endisset
+							</select>
+							<button class="btn btn-primary ml-sm-2 mt-2 mt-sm-0" type="submit">Filtrar</button>					
+						</div>
+					</form>
+				</div>
+			</div>
 			<div class="row">
 				@foreach ($comidas as $comida)
 				<div class="col-lg-4 col-sm-6 mb-4">
