@@ -67,13 +67,7 @@ Produtos
 			@foreach ($comidas as $comida)
 			<div class="col-lg-4 col-sm-6 mb-4">
 				<div class="card portfolio-item" style="width: 18rem;">
-					@if ($comida->tag==0)
-						<img class="img-fluid" src="{{ asset('/assets/img/portfolio/bolo.jpg') }}" height="400px" width="400px"/>
-					@elseif ($comida->tag==1)
-						<img class="img-fluid" src="{{ asset('/assets/img/portfolio/pao.jpg') }}" height="400px" width="400px"/>
-					@else
-						<img class="img-fluid" src="{{ asset('/assets/img/portfolio/salgado.jpg') }}" height="400px" width="400px"/>
-					@endif
+					<img class="img-fluid" src="{{ asset('img/comidas/' . $comida->imagem) }}" height="400px" width="400px"/>
 
 					<div class="card-body" id="comida{{ $comida->id }}">
 						@if ($comida->tag == 0)
@@ -107,7 +101,7 @@ Produtos
 					</button>
 				</div>
 				<div class="modal-body">
-					<form method="post" action="{{ route('comidas.store') }}">
+					<form method="post" action="{{ route('comidas.store') }}" enctype="multipart/form-data">
 						@csrf
 						<div class="row">
 							<div class="col-md-5">
@@ -133,12 +127,12 @@ Produtos
 									</select>
 								</div>
 							</div>
-							<!--<div class="col-md-6">
+							<div class="col-md-6">
 								<div class="form-group">
-									<input type="file" class="custom-file-input border" id="customFile">
-									<label class="custom-file-label border" for="customFile">Escolher arquivo</label>
+									<input type="file" class="custom-file-input border" id="customFile" name="imagem">
+									<label class="custom-file-label border" for="customFile">Escolher imagem</label>
 								</div>
-							</div>-->
+							</div>
 						</div>
 							<div class="row">
 								<div class="col-md-12">

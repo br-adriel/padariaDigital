@@ -63,11 +63,11 @@ Editar produto
 			<div class="col-md">
 				<div class="card">
 					<div class="card-header card-header-warning">
-						<h4 class="card-title">Edite Sua Empresa</h4>
+						<h4 class="card-title">Editar produto</h4>
 						<p class="card-category">Preencha corretamente</p>
 					</div>
 					<div class="card-body">
-						<form method="post" action="{{ route('comidas.update', ['comida'=>$comida->id]) }}">
+						<form method="post" action="{{ route('comidas.update', ['comida'=>$comida->id]) }}" enctype="multipart/form-data">
 							@csrf
 							@method('PUT')
 							<div class="row">
@@ -104,12 +104,12 @@ Editar produto
 										</select>
 									</div>
 								</div>
-								<!--<div class="col-md-6">
+								<div class="col-md-6">
 									<div class="form-group">
-										<input type="file" class="custom-file-input border" id="customFile">
-										<label class="custom-file-label border" for="customFile">Escolher arquivo</label>
+										<input type="file" class="form-control-file" id="customFile" name="imagem">
+										<label class="custom-file-label border" for="customFile">Escolher imagem</label>
 									</div>
-								</div>-->
+								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
