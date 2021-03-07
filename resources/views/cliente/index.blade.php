@@ -70,7 +70,7 @@
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
-							<img class="img-fluid" src="{{ asset('assets/img/portfolio/pao.jpg') }}" alt="" height="400px" width="400px"/>
+							<img class="img-fluid" src="{{ asset('img/comidas/' . $comida->imagem) }}" alt="" height="400px" width="400px"/>
 						</a>
 						<div class="card-body">
 							@if ($comida->tag == 0)
@@ -123,7 +123,7 @@
 									<div class="modal-body">
 										<!-- Detalhes do produto-->
 										<h2 class="text-uppercase">{{ $comida->nome }}</h2>
-										<img class="img-fluid d-block" src="{{ asset('assets/img/portfolio/pao.jpg') }}" alt="pão" />
+										<img class="img-fluid d-block" src="{{ asset('img/comidas/' . $comida->imagem) }}" alt="pão" />
 										<ul class="list-inline">
 											<li>{{ $comida->descricao }}</li>
 											<li class="text-danger"><h6>R$ {{ $comida->preco }}</h6></li>
@@ -172,7 +172,7 @@
 									<div class="modal-body">
 										<!-- Detalhes do produto-->
 										<h2 class="text-uppercase">{{ $comida->nome }}</h2>
-										<img class="img-fluid d-block" src="{{ asset('assets/img/portfolio/pao.jpg') }}" alt="pão" />
+										<img class="img-fluid d-block" src="{{ asset('img/comidas/' . $comida->imagem) }}" alt="pão" />
 										<ul class="list-inline">
 											<li>Info.: {{ $comida->descricao }}</li>
 											<li class="text-danger"><h6>R$ {{ $comida->preco }}</h6></li>
