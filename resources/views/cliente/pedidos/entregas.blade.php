@@ -8,9 +8,11 @@ Entregas
 <section class="page-section bg-light mt-3" >
 	<div class="container">
 		@isset($mensagem)
-		<div class="alert alert-success">
-			<p class="text-center mb-0">{{ $mensagem }}</p>
-		</div>
+			@if ($mensagem == 1)
+				<div class="alert alert-success">
+					<p class="text-center mb-0">Nossa equipe recebeu seu pedido, entraremos em contato assim que pudermos.</p>
+				</div>
+			@endif
 		@endisset
 
 		@foreach($clis1 as $cli)

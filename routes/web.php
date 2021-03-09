@@ -59,7 +59,7 @@ Route::put('/carrinho/{cliente}/entrega', [PedidoController::class, 'pedirEntreg
 Route::delete('/carrinho/{cliente}/{pedido}/excluir', [PedidoController::class, 'destroy'])->name('pedidos.delete');
 
 Route::get('/entregas', [PedidoController::class, 'entregas'])->name('pedidos.entregas');
-Route::get('/entregas/{cliente?}', [PedidoController::class, 'entregas2'])->name('pedidos.entregas');
+Route::get('/entregas/{cliente?}/{mensagem?}', [PedidoController::class, 'entregas2'])->name('pedidos.entregas');
 
 Route::get('/', [ClienteController::class, 'index'])->name('index');
 Route::get('/{cliente?}', [ClienteController::class, 'index2'])->name('index');
