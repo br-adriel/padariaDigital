@@ -76,7 +76,7 @@ class PedidoController extends Controller
     }
 
 
-    public function entregas2($cliente) {
+    public function entregas2($cliente, $mensagem) {
         $panificadora = Panificadora::find(1);
         $clis = Cliente::all();
         $pedidos = DB::table('pedidos')->join('comidas', 'pedidos.comida', '=', 'comidas.id')
@@ -105,7 +105,7 @@ class PedidoController extends Controller
             }
         }
 
-        return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis1'=>$clis1, 'clis2'=>$clis2, 'panificadora'=>$panificadora, 'cliente'=>$cliente]);
+        return view('cliente.pedidos.entregas', ['pedidos'=>$pedidos, 'clis1'=>$clis1, 'clis2'=>$clis2, 'panificadora'=>$panificadora, 'cliente'=>$cliente, 'mensagem'=>$mensagem]);
     }
 
 
@@ -117,9 +117,7 @@ class PedidoController extends Controller
     		$pedido->save();
     	}
 
-        $mensagem = "Nossa equipe recebeu seu pedido, entraremos em contato assim que pudermos.";
-
-    	return redirect()->route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>$mensagem]);
+    	return redirect()->route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>1]);
     }
 
 
