@@ -32,14 +32,18 @@
 				<ul class="navbar-nav text-uppercase ml-auto">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#page-top">Home</a></li>
 					@isset($cliente)
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>0]) }}">Entregas</a></li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('pedidos.carrinho', ['cliente'=>$cliente]) }}">Carrinho</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>0]) }}">Entregas</a>
+					</li>
 					@else
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a></li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('pedidos.carrinho') }}">Carrinho</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a>
 					</li>
 					@endisset
 				</ul>
@@ -233,7 +237,7 @@
 												<input class="form-control" id="inputPassword2" placeholder="Nome" type="text" required name="nome">
 											</li>
 											<li>
-												<input class="form-control mt-2" id="inputPassword2" placeholder="Telefone" type="number" required name="telefone" maxlength="11" minlength="11">
+												<input class="form-control mt-2" id="inputPassword2" placeholder="Telefone" type="text" required name="telefone" maxlength="11" minlength="11">
 											</li>
 										</ul>
 									</div>
