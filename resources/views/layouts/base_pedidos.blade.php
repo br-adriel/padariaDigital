@@ -34,20 +34,20 @@
 							<a class="nav-link js-scroll-trigger" href="{{ route('index', ['cliente'=>$cliente]) }}">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>0]) }}">Entregas</a>
+							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.carrinho', ['cliente'=>$cliente]) }}">Carrinho</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.carrinho', ['cliente'=>$cliente]) }}">Carrinho</a>
+							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas', ['cliente'=>$cliente, 'mensagem'=>0]) }}">Entregas</a>
 						</li>
 					@else
 						<li class="nav-item">
 							<a class="nav-link js-scroll-trigger" href="{{ route('index') }}">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a>
+							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.carrinho') }}">Carrinho</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.carrinho') }}">Carrinho</a>
+							<a class="nav-link js-scroll-trigger" href="{{ route('pedidos.entregas') }}">Entregas</a>
 						</li>
 					@endisset
 				</ul>

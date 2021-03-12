@@ -112,7 +112,7 @@ Editar produto
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-12 mt-3">
 									<div class="form-group">
 										<label class="bmd-label-floating">Descrição</label>
 										<input type="text" class="form-control" name="descricao" required value="{{ $comida->descricao }}">
